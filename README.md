@@ -49,11 +49,11 @@ To give the columns in the <em>sets</em> dataset an understandable name, the lab
 names(sets) <- features[,1]
 ```
 
-As only columns regarding mean and standard deviation will be used, these are selected using the <em>grepl</em> command.  
+As only columns regarding mean and standard deviation will be used, these are selected using the <em>grepl</em> command. Note that also a check is done on brackets after <em>std</em> and <em>mean</em> as otherwise variables with name like <em>meanfrequency</em> would also be returned.
 
 ```R
 ##Selecting only those columns with "std" (Standard Deviation) or "mean" in the description
-sets <- sets[ grepl("std|mean", names(sets), ignore.case = TRUE) ]
+sets <- sets[ grepl("std\\(\\)|mean\\(\\)", names(sets), ignore.case = TRUE) ]
 ```
 
 The dataset <em>subjects</em>, <em>moves</em> and <em>sets</em> are combined using the <em>cbind</em> command.
